@@ -98,7 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
         _phrase = 'BOOM !';
         _tS = const TextStyle(
             fontSize: 60.0,
-            color: Colors.red
+            color: Colors.red,
+            fontWeight: FontWeight.bold
         );
         _tC = const TextStyle(
           fontSize: 30.0,
