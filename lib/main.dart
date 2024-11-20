@@ -59,6 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
   double _fontSize = 30.0;
   Color _couleur = Colors.white;
   String _phrase = 'Clic avant l’explosion :';
+  TextStyle _tC = const TextStyle(
+    fontSize: 30.0,
+    color: Colors.green
+  );
   TextStyle _tS = const TextStyle(
     fontSize: 30.0
   );
@@ -76,13 +80,30 @@ class _MyHomePageState extends State<MyHomePage> {
         _tS = TextStyle(
             fontSize: _fontSize
         );
+        if(_counter <3){
+          _tC = const TextStyle(
+            fontSize: 30.0,
+            color: Colors.orange
+          );
+        }else{
+          if(_counter < 5){
+            _tC = const TextStyle(
+              fontSize: 30.0,
+            color: Colors.yellow
+          );
+          }
+        }
       }else{
         _counter = 0;
         _phrase = 'BOOM !';
         _tS = const TextStyle(
             fontSize: 60.0,
             color: Colors.red
-        );  
+        );
+        _tC = const TextStyle(
+          fontSize: 30.0,
+            color: Colors.red
+          );  
         _couleur = Colors.yellow;    
       }
     });
@@ -132,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: _tC,
             ),
           ],
         ),
