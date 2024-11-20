@@ -57,6 +57,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 10;
   double _fontSize = 30.0;
+  Color _couleur = Colors.white;
   String _phrase = 'Clic avant l’explosion :';
   TextStyle _tS = const TextStyle(
     fontSize: 30.0
@@ -69,18 +70,20 @@ class _MyHomePageState extends State<MyHomePage> {
       // afin que l'affichage puisse refléter les valeurs mises à jour. Si nous avions modifié
       // _counter sans appeler setState(), la méthode de construction n'aurait pas été
       // appelée à nouveau, et donc rien ne semblerait se passer.
-      if(_counter != 0){
+      if(_counter > 1){
         _counter--;
         _fontSize++;
         _tS = TextStyle(
             fontSize: _fontSize
         );
       }else{
+        _counter = 0;
         _phrase = 'BOOM !';
         _tS = const TextStyle(
             fontSize: 60.0,
             color: Colors.red
-        );      
+        );  
+        _couleur = Colors.yellow;    
       }
     });
   }
@@ -94,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: _couleur,
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
