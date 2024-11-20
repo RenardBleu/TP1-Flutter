@@ -56,6 +56,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 10;
+  double _fontSize = 30.0;
+  String _phrase = 'Clic avant l’explosion :';
+  TextStyle _tS = const TextStyle(
+    fontSize: 30.0
+  );
 
   void _decrementCounter() {
     setState(() {
@@ -66,6 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
       // appelée à nouveau, et donc rien ne semblerait se passer.
       if(_counter != 0){
         _counter--;
+        _fontSize++;
+        _tS = TextStyle(
+            fontSize: _fontSize
+        );
+      }else{
+        _phrase = 'BOOM !';
+        _tS = const TextStyle(
+            fontSize: 60.0,
+            color: Colors.red
+        );      
       }
     });
   }
@@ -107,8 +122,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // fil de fer pour chaque widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              _phrase,
+              style: _tS,
             ),
             Text(
               '$_counter',
