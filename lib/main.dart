@@ -55,16 +55,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter = 10;
 
-  void _incrementCounter() {
+  void _decrementCounter() {
     setState(() {
       // Cet appel à setState indique au framework Flutter qu'un changement s'est produit 
       // dans cet State, ce qui le pousse à relancer la méthode de construction ci-dessous
       // afin que l'affichage puisse refléter les valeurs mises à jour. Si nous avions modifié
       // _counter sans appeler setState(), la méthode de construction n'aurait pas été
       // appelée à nouveau, et donc rien ne semblerait se passer.
-      _counter++;
+      if(_counter != 0){
+        _counter--;
+      }
     });
   }
 
@@ -87,22 +89,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        // Center est un widget de mise en page. Il prend un seul enfant et le positionne
+        // au milieu de son parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
+          // Column est également un widget de mise en page. Il prend une liste d'enfants et
+          // les arrange verticalement. Par défaut, il se taille lui-même pour s'adapter à ses
+          // enfants horizontalement, et essaie d'être aussi haut que son parent.
           //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
+          // Column possède diverses propriétés pour contrôler sa taille et
+          // la façon dont il positionne ses enfants. Ici, nous utilisons mainAxisAlignment pour
+          // centrer verticalement les enfants ; l'axe principal ici est l'axe vertical
+          // car les colonnes sont verticales (l'axe croisé serait
           // horizontal).
           //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
+          // ESSAYEZ CECI : Invoquez "debug painting" (choisissez l'action "Toggle Debug Paint"
+          // dans l'IDE, ou appuyez sur "p" dans la console), pour voir le
+          // fil de fer pour chaque widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -116,9 +118,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _decrementCounter,
+        tooltip: 'Decrement',
+        child: const Icon(Icons.history),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
